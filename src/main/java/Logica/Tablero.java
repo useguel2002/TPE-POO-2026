@@ -1,7 +1,5 @@
 package Logica;
 
-import Logica.Celda;
-
 public class Tablero {
     private Celda[][] celdas;
     private int filas;
@@ -14,7 +12,7 @@ public class Tablero {
 
         for (int i=0; i<filas; i++)
             for (int j=0; j<columnas; j++){
-                celdas[i][j] = new Celda();
+                celdas[i][j] = new CeldaMuerta();
             }
     }
 }
