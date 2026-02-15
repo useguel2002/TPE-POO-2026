@@ -6,12 +6,10 @@ public class Tablero {
     private Celda[][] celdas;
     private int filas;
     private int columnas;
-    private boolean estatico;
 
     public Tablero(int fil, int col){
         this.filas = fil;
         this.columnas = col;
-        this.estatico = false;
         celdas = new Celda[fil][col];
 
         for (int i=0; i<filas; i++)
@@ -48,10 +46,7 @@ public class Tablero {
         //Metodo para devolver una celda en especifico.
         return celdas[fil][col];
     }
-    public boolean isEstatico() {
-        return estatico;
-    }
-    public void sigGeneracion(){
+    public boolean sigGeneracion(){
         //Metodo para calcular la proxima generacion de celdas en el tablero. Por cada celda se debe contar la cantidad de
         //vecinos, y a razon de su cantidad determinar si mueren, viven o se mantiene el estado actual.
         //Se usa un tablero auxiliar para no modificar el actual en cada instancia y calcular erroneamente.
@@ -62,7 +57,10 @@ public class Tablero {
                 nuevoEstado[i][j] = celdas[i][j].siguienteEstado(vecVivos);
             }
         if (Arrays.deepEquals(celdas, nuevoEstado)){
-            this.estatico = true;
-        } else celdas = nuevoEstado;
+            return true;
+        } else{
+            celdas = nuevoEstado;
+            return false;
+        }
     }
 }

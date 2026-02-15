@@ -5,18 +5,17 @@ import Logica.*;
 public class TestConsola {
     public static void main(String[] args) {
         Tablero tablero = new Tablero(10, 10);
-        // Patrón Blinker (oscilador)
-        tablero.setCelda(0, 1, new CeldaViva());
-        tablero.setCelda(1, 2, new CeldaViva());
-        tablero.setCelda(2, 0, new CeldaViva());
+
+        tablero.setCelda(5, 6, new CeldaViva());
+        tablero.setCelda(5, 4, new CeldaViva());
+        tablero.setCelda(5, 5, new CeldaViva());
         tablero.setCelda(2, 1, new CeldaViva());
         tablero.setCelda(2, 2, new CeldaViva());
 
         int i = 1;
         System.out.println("Estado Inicial:");
         imprimir(tablero);
-        while (!tablero.isEstatico()){
-            tablero.sigGeneracion();
+        while (!tablero.sigGeneracion()){
             System.out.println("Generación " + i + ":");
             imprimir(tablero);
             i++;
