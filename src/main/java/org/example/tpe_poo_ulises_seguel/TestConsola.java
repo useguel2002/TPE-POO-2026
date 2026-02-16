@@ -1,16 +1,23 @@
 package org.example.tpe_poo_ulises_seguel;
 
 import Logica.*;
+import java.io.IOException;
 
 public class TestConsola {
     public static void main(String[] args) {
-        Tablero tablero = TableroCarga.aleatorio(10,10,0.5);
+        try {
+            Tablero tableroA = TableroCarga.desdeArchivo("ejemplo.txt");
+        } catch (IOException e) {
+            System.out.println("Error al cargar archivo: " + e.getMessage());
+        }
+
+        Tablero tableroB = TableroCarga.aleatorio(10,10,0.5);
         int i = 1;
         System.out.println("Estado Inicial:");
-        imprimir(tablero);
-        while (!tablero.sigGeneracion()){
+        imprimir(tableroB);
+        while (!tableroB.sigGeneracion()){
             System.out.println("Generación " + i + ":");
-            imprimir(tablero);
+            imprimir(tableroB);
             i++;
         }
     }
