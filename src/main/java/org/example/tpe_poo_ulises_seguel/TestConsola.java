@@ -16,8 +16,10 @@ public class TestConsola {
     }
 
     private static void imprimir(Tablero tablero) {
-        for (int i = 0; i < 30; i++) {
-            for (int j = 0; j < 30; j++) {
+        int filas = tablero.getFilas();
+        int columnas = tablero.getColumnas();
+        for (int i = 0; i <filas; i++) {
+            for (int j = 0; j < columnas; j++) {
                 System.out.print(tablero.getCelda(i, j).estaViva() ? "O " : ". ");
             }
             System.out.println();

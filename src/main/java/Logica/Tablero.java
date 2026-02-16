@@ -63,4 +63,17 @@ public class Tablero {
             return false;
         }
     }
+
+    public void setColumnas(int columnas) {
+        this.columnas = columnas;
+    }
+    public void setFilas(int filas) {
+        this.filas = filas;
+    }
+    public int getColumnas() {
+        return columnas;
+    }
+    public int getFilas() {
+        return filas;
+    }
 }
