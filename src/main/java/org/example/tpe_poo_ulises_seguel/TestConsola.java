@@ -5,14 +5,14 @@ import java.io.IOException;
 
 public class TestConsola {
     public static void main(String[] args) {
-        Tablero tableroA = null;
+        Tablero tableroA;
         try {
             tableroA = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 3.txt");
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());
             return; //en caso que TableroA siga NULL volver/terminar
         }
-        Tablero tableroB = TableroCarga.aleatorio(10,10,0.5);
+        Tablero tableroB = TableroCarga.aleatorio(10, 10, 0.5);
 
         int i = 1;
         System.out.println("Estado Inicial:");
