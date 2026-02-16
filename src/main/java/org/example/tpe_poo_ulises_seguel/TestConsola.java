@@ -35,11 +35,11 @@ public class TestConsola {
             }
         }
         else {
-            do {
+            while (!tableroA.sigGeneracion() && (i<=n)) {
                 System.out.println("Generación " + i + ":");
                 imprimir(tableroA);
                 i++;
-            } while (!tableroA.sigGeneracion() && (i<=n));
+            }
         }
 
     }
