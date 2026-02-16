@@ -16,11 +16,26 @@ public class TestConsola {
         }
         System.out.println();
     }
-    private static void jugar(Tablero tablero){
+    private static int setGeneracion(){
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese cantidad de generaciones (0 si quiere indefinido): ");
-        int n = scanner.nextInt();
-
+        int n;
+        while (true) {
+            System.out.print("Ingrese cantidad de generaciones (0 si quiere indefinido): ");
+            if (scanner.hasNextInt()) {
+                n = scanner.nextInt();
+                if (n >= 0) {
+                    return n;
+                } else {
+                    System.out.println("El número no puede ser negativo.");
+                }
+            } else {
+                System.out.println("Debe ingresar un número entero.");
+                scanner.next(); //limpia entrad
+            }
+        }
+    }
+    private static void simular(Tablero tablero){
+        int n = setGeneracion();
         int i = 1;
         System.out.println("Estado Inicial:");
         imprimir(tablero);
@@ -47,22 +62,22 @@ public class TestConsola {
                 System.out.println("Generación " + i + ":");
                 imprimir(tablero);
                 if (estable) {
-                    System.out.println("El tablero se volvió estable.");
+                    System.out.println("El tablero se volvió estable. No cambiará ninguna de sus celdas.");
                     break;
                 }
             }
         }
     }
     public static void main(String[] args) {
-        Tablero tableroA;
+        Tablero tablero;
         try {
-            tableroA = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 2.txt");
+            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 2.txt");
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());
             return; //en caso que TableroA siga NULL volver/terminar
         }
         Tablero tableroB = TableroCarga.aleatorio(10, 10, 0.5);
-        jugar(tableroA);
+        simular(tablero);
 
     }
 
