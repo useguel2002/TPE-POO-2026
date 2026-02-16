@@ -5,45 +5,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class TestConsola {
-    public static void main(String[] args) {
-        Tablero tableroA;
-        try {
-            tableroA = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 3.txt");
-        } catch (IOException e) {
-            System.out.println("Error al cargar archivo: " + e.getMessage());
-            return; //en caso que TableroA siga NULL volver/terminar
-        }
-        Tablero tableroB = TableroCarga.aleatorio(10, 10, 0.5);
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese cantidad de generaciones (0 si quiere indefinido): ");
-        int n = scanner.nextInt();
-
-        int i = 1;
-        System.out.println("Estado Inicial:");
-        imprimir(tableroA);
-        if (n==0){
-            while (!tableroA.sigGeneracion()){
-                System.out.println("Generación " + i + ":");
-                imprimir(tableroA);
-                i++;
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        else {
-            while (!tableroA.sigGeneracion() && (i<=n)) {
-                System.out.println("Generación " + i + ":");
-                imprimir(tableroA);
-                i++;
-            }
-        }
-
-    }
-
     private static void imprimir(Tablero tablero) {
         int filas = tablero.getFilas();
         int columnas = tablero.getColumnas();
@@ -55,4 +16,55 @@ public class TestConsola {
         }
         System.out.println();
     }
+    private static void jugar(Tablero tablero){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese cantidad de generaciones (0 si quiere indefinido): ");
+        int n = scanner.nextInt();
+
+        int i = 1;
+        System.out.println("Estado Inicial:");
+        imprimir(tablero);
+        if (n==0){
+            while (true) {
+                boolean estable = tablero.sigGeneracion();
+                System.out.println("Generación " + i + ":");
+                imprimir(tablero);
+                i++;
+                if (estable) {
+                    System.out.println("El tablero se volvió estable.");
+                    break;
+                }
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else {
+            while (i<=n) {
+                boolean estable = tablero.sigGeneracion();
+                System.out.println("Generación " + i + ":");
+                imprimir(tablero);
+                i++;
+                if (estable) {
+                    System.out.println("El tablero se volvió estable.");
+                    break;
+                }
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Tablero tableroA;
+        try {
+            tableroA = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 2.txt");
+        } catch (IOException e) {
+            System.out.println("Error al cargar archivo: " + e.getMessage());
+            return; //en caso que TableroA siga NULL volver/terminar
+        }
+        Tablero tableroB = TableroCarga.aleatorio(10, 10, 0.5);
+        jugar(tableroA);
+
+    }
+
 }

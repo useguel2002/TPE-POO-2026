@@ -39,13 +39,7 @@ public class Tablero {
         return fil >= 0 && fil < filas &&
                 col >= 0 && col < columnas;
     }
-    public void setCelda(int fil, int col, Celda celda) {
-        celdas[fil][col] = celda;
-    }
-    public Celda getCelda(int fil, int col){
-        //Metodo para devolver una celda en especifico.
-        return celdas[fil][col];
-    }
+
     public boolean sigGeneracion(){
         //Metodo para calcular la proxima generacion de celdas en el tablero. Por cada celda se debe contar la cantidad de
         //vecinos, y a razon de su cantidad determinar si mueren, viven o se mantiene el estado actual.
@@ -75,5 +69,12 @@ public class Tablero {
     }
     public int getFilas() {
         return filas;
+    }
+    public void setCelda(int fil, int col, Celda celda) {
+        celdas[fil][col] = celda;
+    }
+    public Celda getCelda(int fil, int col){
+        //Metodo para devolver una celda en especifico.
+        return celdas[fil][col];
     }
 }
