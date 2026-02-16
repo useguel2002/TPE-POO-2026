@@ -23,7 +23,7 @@ public class TestConsola {
         System.out.println("Estado Inicial:");
         imprimir(tableroA);
         if (n==0){
-            while (!tableroA.sigGeneracion() && (i<=n)){
+            while (!tableroA.sigGeneracion()){
                 System.out.println("Generación " + i + ":");
                 imprimir(tableroA);
                 i++;
