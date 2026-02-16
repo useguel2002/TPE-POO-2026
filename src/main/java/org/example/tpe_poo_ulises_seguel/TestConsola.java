@@ -42,11 +42,10 @@ public class TestConsola {
             }
         }
         else {
-            while (i<=n) {
+            for (;i<=n;i++){
                 boolean estable = tablero.sigGeneracion();
                 System.out.println("Generación " + i + ":");
                 imprimir(tablero);
-                i++;
                 if (estable) {
                     System.out.println("El tablero se volvió estable.");
                     break;
