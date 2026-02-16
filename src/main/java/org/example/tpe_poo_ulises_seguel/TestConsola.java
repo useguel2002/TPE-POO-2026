@@ -7,7 +7,7 @@ public class TestConsola {
     public static void main(String[] args) {
         Tablero tableroA = null;
         try {
-            tableroA = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 1");
+            tableroA = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 2");
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());
         }
