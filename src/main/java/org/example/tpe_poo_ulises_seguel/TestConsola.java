@@ -11,8 +11,8 @@ public class TestConsola {
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());
         }
+        Tablero tableroB = TableroCarga.aleatorio(10,10,0.5);
 
-        //Tablero tableroB = TableroCarga.aleatorio(10,10,0.5);
         int i = 1;
         System.out.println("Estado Inicial:");
         imprimir(tableroA);
