@@ -2,6 +2,7 @@ package org.example.tpe_poo_ulises_seguel;
 
 import Logica.*;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class TestConsola {
     public static void main(String[] args) {
@@ -14,14 +15,33 @@ public class TestConsola {
         }
         Tablero tableroB = TableroCarga.aleatorio(10, 10, 0.5);
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese cantidad de generaciones (0 si quiere indefinido): ");
+        int n = scanner.nextInt();
+
         int i = 1;
         System.out.println("Estado Inicial:");
         imprimir(tableroA);
-        while (!tableroA.sigGeneracion()) {
-            System.out.println("Generación " + i + ":");
-            imprimir(tableroA);
-            i++;
+        if (n==0){
+            while (!tableroA.sigGeneracion() && (i<=n)){
+                System.out.println("Generación " + i + ":");
+                imprimir(tableroA);
+                i++;
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+        else {
+            do {
+                System.out.println("Generación " + i + ":");
+                imprimir(tableroA);
+                i++;
+            } while (!tableroA.sigGeneracion() && (i<=n));
+        }
+
     }
 
     private static void imprimir(Tablero tablero) {
