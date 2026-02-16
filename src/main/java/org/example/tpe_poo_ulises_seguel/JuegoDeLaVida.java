@@ -12,8 +12,9 @@ public class JuegoDeLaVida extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(JuegoDeLaVida.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        stage.setTitle("Juego De La Vida");
         stage.setScene(scene);
+        stage.setFullScreen(true);
         stage.show();
     }
 
