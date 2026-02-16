@@ -4,14 +4,7 @@ import Logica.*;
 
 public class TestConsola {
     public static void main(String[] args) {
-        Tablero tablero = new Tablero(10, 10);
-
-        tablero.setCelda(5, 6, new CeldaViva());
-        tablero.setCelda(5, 4, new CeldaViva());
-        tablero.setCelda(5, 5, new CeldaViva());
-        tablero.setCelda(2, 1, new CeldaViva());
-        tablero.setCelda(2, 2, new CeldaViva());
-
+        Tablero tablero = TableroCarga.aleatorio(10,10,0.5);
         int i = 1;
         System.out.println("Estado Inicial:");
         imprimir(tablero);
@@ -23,11 +16,9 @@ public class TestConsola {
     }
 
     private static void imprimir(Tablero tablero) {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print(
-                        tablero.getCelda(i, j).estaViva() ? "O " : ". "
-                );
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 30; j++) {
+                System.out.print(tablero.getCelda(i, j).estaViva() ? "O " : ". ");
             }
             System.out.println();
         }
