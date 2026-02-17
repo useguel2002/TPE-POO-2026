@@ -15,7 +15,6 @@ import java.io.IOException;
 public class HelloController {
     @FXML
     private GridPane grilla;
-    @FXML
     private Tablero tablero;
     @FXML
     public void initialize() {
@@ -28,6 +27,7 @@ public class HelloController {
         }
     }
     public void dibujar(){
+        grilla.getChildren().clear();
         for (int fila = 0; fila < tablero.getFilas(); fila++) {
             for (int col = 0; col < tablero.getColumnas(); col++) {
                 Pane celda = new Pane();
@@ -37,14 +37,21 @@ public class HelloController {
                 } else {
                     celda.setStyle("-fx-background-color: white;");
                 }
-                celda.setPrefSize(20, 20);
+                celda.setPrefSize(15, 15);
                 grilla.add(celda, col, fila);
             }
         }
     }
     @FXML
     public void siguienteGeneracion(){
-        tablero.sigGeneracion();
+        boolean estable = tablero.sigGeneracion();
         dibujar();
+        if (estable) {
+            System.out.println("Tablero estable");
+        }
+    }
+    @FXML
+    public void simular(){
+
     }
 }
