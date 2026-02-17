@@ -15,6 +15,7 @@ import java.io.IOException;
 public class HelloController {
     @FXML
     private GridPane grilla;
+    @FXML
     private Tablero tablero;
     @FXML
     public void initialize() {
@@ -24,11 +25,13 @@ public class HelloController {
             System.out.println("Error al cargar archivo: " + e.getMessage());
             return; //en caso que Tablero siga NULL volver/terminar
         }
+    }
+    public void dibujar(){
         for (int fila = 0; fila < tablero.getFilas(); fila++) {
             for (int col = 0; col < tablero.getColumnas(); col++) {
                 Pane celda = new Pane();
                 celda.setStyle("-fx-border-color: black;");
-                celda.setPrefSize(30, 30);
+                celda.setPrefSize(20, 20);
                 grilla.add(celda, col, fila);
             }
         }
