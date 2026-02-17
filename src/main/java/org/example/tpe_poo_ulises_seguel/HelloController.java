@@ -26,7 +26,7 @@ public class HelloController {
     @FXML
     public void initialize() {
         try {
-            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 2.txt");
+            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 3.txt");
             dibujar();
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());
@@ -72,5 +72,9 @@ public class HelloController {
 
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+    }
+    @FXML
+    public void parar(){
+        timeline.stop(); //?
     }
 }
