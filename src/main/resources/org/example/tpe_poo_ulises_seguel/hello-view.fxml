@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 
 
 <BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.tpe_poo_ulises_seguel.HelloController">
    <center>
-      <GridPane fx:id="grilla" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+      <GridPane fx:id="grilla" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
 
 </GridPane>
    </center>
    <bottom>
-      <Button fx:id="sigBoton" mnemonicParsing="false" onAction="#siguienteGeneracion" text="Siguiente" BorderPane.alignment="CENTER" />
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="simularBoton" mnemonicParsing="false" onAction="#simular" text="Simular" />
+            <Button fx:id="pararButton" mnemonicParsing="false" text="Parar" />
+            <Button fx:id="sigBoton" mnemonicParsing="false" onAction="#siguienteGeneracion" text="Siguiente" />
+            <Button fx:id="velocidadButton" mnemonicParsing="false" text="Velocidad" />
+            <Label fx:id="labelVel" text="Velocidad: x1" />
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>

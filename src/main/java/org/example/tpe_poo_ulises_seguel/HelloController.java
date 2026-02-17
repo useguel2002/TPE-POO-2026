@@ -1,6 +1,7 @@
 package org.example.tpe_poo_ulises_seguel;
 
 import Logica.*;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,13 +10,19 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class HelloController {
     @FXML
+    private Button simularBoton, sigBoton, pararButton, velocidadButton;
+    @FXML
+    private Label labelVel;
+    @FXML
     private GridPane grilla;
     private Tablero tablero;
+    private Timeline timeline;
     @FXML
     public void initialize() {
         try {
@@ -52,6 +59,18 @@ public class HelloController {
     }
     @FXML
     public void simular(){
+        timeline = new Timeline(
+                new KeyFrame(Duration.millis(500), e -> {
+                    boolean estable = tablero.sigGeneracion();
+                    dibujar();
+                    if (estable) {
+                        timeline.stop();
+                        System.out.println("Tablero estable");
+                    }
+                })
+        );
 
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 }
