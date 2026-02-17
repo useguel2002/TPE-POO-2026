@@ -12,8 +12,8 @@ public class JuegoDeLaVida extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(JuegoDeLaVida.class.
                 getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Trasteo botones y teclas");
+        Scene scene = new Scene(fxmlLoader.load(), 500, 500);
+        stage.setTitle("Juego de la Vida");
         stage.setScene(scene);
         stage.show();
     }

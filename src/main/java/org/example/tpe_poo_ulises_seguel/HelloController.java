@@ -6,48 +6,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 public class HelloController {
     @FXML
-    private Label label2;
-    @FXML
-    private Button bReset;
-    @FXML
-    private Button bOK;
-    @FXML
-    private Button bCancel;
-    @FXML
-    private Label label1;
-    @FXML
-    private Button boton1;
-    int contadorOK = 0;
-    int contadorCancel = 0;
+    private GridPane tablero;
+    private final int FILAS = 50;
+    private final int COLUMNAS = 50;
 
-    public void pushbutton(ActionEvent actionEvent) {
-        label1.setText("Ha pulsado el botón");
-        //compruebo qué objeto botón ha sido pulsado
-        //ok o cancel para contarlo
-        Object obj = actionEvent.getSource();
-        if (obj == bOK) {
-            contadorOK++;
-            label1.setText("Ha pulsado OK " + contadorOK + " veces");
+    @FXML
+    public void initialize() {
+        for (int fila = 0; fila < FILAS; fila++) {
+            for (int col = 0; col < COLUMNAS; col++) {
+                Pane celda = new Pane();
+                celda.setStyle("-fx-border-color: black;");
+                celda.setPrefSize(30, 30);
+
+                tablero.add(celda, col, fila);
+            }
         }
-        if (obj == bCancel) {
-            contadorCancel++;
-            label1.setText("Ha pulsado Cancel " + contadorCancel + " veces");
-        }
-        if (obj == bReset) {
-            label1.setText("Label1");
-            label2.setText("Tecla");
-            contadorOK = 0;
-            contadorCancel = 0;
-        }
-    }
-    public void teclaPulsada(KeyEvent ke) {
-        KeyCode key = ke.getCode();
-        if (key == KeyCode.ENTER)
-            label2.setText("ENTER");
-        if (key == KeyCode.ESCAPE)
-            label2.setText("ESCAPE");
     }
 }
