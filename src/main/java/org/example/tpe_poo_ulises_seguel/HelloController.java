@@ -59,6 +59,9 @@ public class HelloController {
     }
     @FXML
     public void simular(){
+        if (timeline != null && timeline.getStatus() == Animation.Status.RUNNING)
+            return; //si ya esta corriendo no deberia volver a hacerlo.
+                    // Duplica la velocidad y genera mensajes infinitos por consola
         timeline = new Timeline(
                 new KeyFrame(Duration.millis(500), e -> {
                     boolean estable = tablero.sigGeneracion();
@@ -75,6 +78,9 @@ public class HelloController {
     }
     @FXML
     public void parar(){
-        timeline.stop(); //?
+        //Si no esta simulando automaticamente y se presiona Parar daba error
+        //debido a que el timeline estaba en NULL
+        if (timeline != null && timeline.getStatus() == Animation.Status.RUNNING)
+            timeline.stop();
     }
 }
