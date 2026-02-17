@@ -10,14 +10,13 @@ import java.io.IOException;
 public class JuegoDeLaVida extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(JuegoDeLaVida.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(JuegoDeLaVida.class.
+                getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Juego De La Vida");
+        stage.setTitle("Trasteo botones y teclas");
         stage.setScene(scene);
-        stage.setFullScreen(true);
         stage.show();
     }
-
     public static void main(String[] args) {
         launch();
     }
