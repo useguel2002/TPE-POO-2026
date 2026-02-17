@@ -42,4 +42,9 @@ public class HelloController {
             }
         }
     }
+    @FXML
+    public void siguienteGeneracion(){
+        tablero.sigGeneracion();
+        dibujar();
+    }
 }
