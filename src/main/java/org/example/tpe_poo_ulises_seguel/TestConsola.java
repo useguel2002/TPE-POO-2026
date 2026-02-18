@@ -14,6 +14,8 @@ public class TestConsola {
                     System.out.print("E ");
                 else if (tablero.getCelda(i,j) instanceof CeldaLatente)
                     System.out.print("L ");
+                else if (tablero.getCelda(i,j) instanceof CeldaVivaRiesgo)
+                    System.out.print("R ");
                 else if (tablero.getCelda(i,j).estaViva())
                     System.out.print("O ");
                 else
@@ -78,7 +80,7 @@ public class TestConsola {
     public static void main(String[] args) {
         Tablero tablero;
         try {
-            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 4.txt");
+            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 5.txt");
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());
             return; //en caso que TableroA siga NULL volver/terminar

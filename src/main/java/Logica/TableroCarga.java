@@ -16,6 +16,8 @@ public class TableroCarga {
                 char c = linea.charAt(j);
                 if (c == 'x' ) {
                     tablero.setCelda(i, j, new CeldaViva());
+                } else if (c == 'r' ) {
+                    tablero.setCelda(i, j, new CeldaVivaRiesgo());
                 } else if (c == 'e' ) {
                     tablero.setCelda(i, j, new CeldaEnferma());
                 } else if (c == 'l' ) {
