@@ -10,7 +10,14 @@ public class TestConsola {
         int columnas = tablero.getColumnas();
         for (int i = 0; i <filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                System.out.print(tablero.getCelda(i, j).estaViva() ? "O " : ". ");
+                if (tablero.getCelda(i,j) instanceof CeldaEnferma)
+                    System.out.print("E ");
+                else if (tablero.getCelda(i,j) instanceof CeldaLatente)
+                    System.out.print("L ");
+                else if (tablero.getCelda(i,j).estaViva())
+                    System.out.print("O ");
+                else
+                    System.out.print(". ");
             }
             System.out.println();
         }
@@ -71,7 +78,7 @@ public class TestConsola {
     public static void main(String[] args) {
         Tablero tablero;
         try {
-            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 2.txt");
+            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 4.txt");
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());
             return; //en caso que TableroA siga NULL volver/terminar
