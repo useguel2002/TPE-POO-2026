@@ -1,0 +1,37 @@
+.root {
+    -fx-background-color: #121212;
+    -fx-font-family: "Segoe UI", "Arial";
+}
+
+.control-bar {
+    -fx-background-color: #1e1e1e;
+    -fx-padding: 15;
+}
+
+.label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-background-color: #2c2c2c;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 8 15 8 15;
+}
+
+.button:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+#simularBoton {
+    -fx-background-color: #2e7d32;
+}
+
+#pararButton {
+    -fx-background-color: #c62828;
+}
+
+#velocidadButton {
+    -fx-background-color: #1565c0;
+}

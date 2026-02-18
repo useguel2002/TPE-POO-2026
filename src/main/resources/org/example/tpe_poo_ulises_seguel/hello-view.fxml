@@ -5,24 +5,28 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.tpe_poo_ulises_seguel.HelloController">
+<BorderPane stylesheets="@dark-theme.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.tpe_poo_ulises_seguel.HelloController">
    <center>
-      <GridPane fx:id="grilla" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <StackPane BorderPane.alignment="CENTER">
+         <children>
+            <GridPane fx:id="grilla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
 
-</GridPane>
+            </GridPane>
+         </children>
+      </StackPane>
    </center>
    <bottom>
-      <HBox BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="simularBoton" mnemonicParsing="false" onAction="#simular" text="Simular" />
-            <Button fx:id="pararButton" mnemonicParsing="false" onAction="#parar" text="Parar" />
-            <Button fx:id="sigBoton" mnemonicParsing="false" onAction="#siguienteGeneracion" text="Siguiente" />
-            <Button fx:id="velocidadButton" mnemonicParsing="false" onAction="#cambiarVelocidad" text="Velocidad" />
-            <Label fx:id="labelVel" text="Velocidad: 500ms" />
-            <Label fx:id="labelGen" text="Generacion: " />
-         </children>
+      <HBox alignment="CENTER" spacing="15" styleClass="control-bar">
+         <Button fx:id="simularBoton" onAction="#simular" text="Simular" />
+         <Button fx:id="pararButton" onAction="#parar" text="Parar" />
+         <Button fx:id="sigBoton" onAction="#siguienteGeneracion" text="Siguiente" />
+         <Button fx:id="velocidadButton" onAction="#cambiarVelocidad" text="Velocidad" />
+         <Label fx:id="labelVel" text="Velocidad: 500ms" />
+         <Label fx:id="labelGen" text="Generacion: 0" />
+         <Label fx:id="labelEstable" />
       </HBox>
    </bottom>
+
 </BorderPane>

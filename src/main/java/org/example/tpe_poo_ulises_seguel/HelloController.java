@@ -15,12 +15,13 @@ public class HelloController {
     @FXML
     private Button simularBoton, sigBoton, pararButton, velocidadButton;
     @FXML
-    private Label labelVel, labelGen;
+    private Label labelVel, labelGen, labelEstable;
     @FXML
     private GridPane grilla;
     private Tablero tablero;
     private Timeline timeline;
-    private int velocidad = 500; //x1 = 500; x2 = 250; x4 = 125. x1->x2->x4->x1
+    private int velocidad = 500, generacion=0;
+    //x1 = 500; x2 = 250; x4 = 125. x1->x2->x4->x1
 
     @FXML
     public void initialize() {
@@ -51,23 +52,25 @@ public class HelloController {
     @FXML
     public void siguienteGeneracion(){
         boolean estable = tablero.sigGeneracion();
+        generacion++;
         dibujar();
-        if (estable) {
-            System.out.println("Tablero estable");
-        }
+        labelGen.setText("Generacion: " + generacion);
+        if (estable)
+            labelEstable.setText("Tablero Estable");
     }
     @FXML
     public void simular(){
         if (timeline != null && timeline.getStatus() == Animation.Status.RUNNING)
-            return; //si ya esta corriendo no deberia volver a hacerlo.
-                    // Duplica la velocidad y genera mensajes infinitos por consola
+            return;
         timeline = new Timeline(
                 new KeyFrame(Duration.millis(velocidad), e -> {
                     boolean estable = tablero.sigGeneracion();
+                    generacion++;
                     dibujar();
+                    labelGen.setText("Generacion: " + generacion);
                     if (estable) {
                         timeline.stop();
-                        System.out.println("Tablero estable");
+                        labelEstable.setText("Tablero Estable");
                     }
                 })
         );
@@ -76,19 +79,16 @@ public class HelloController {
     }
     @FXML
     public void parar(){
-        //Si no esta simulando automaticamente y se presiona Parar daba error
-        //debido a que el timeline estaba en NULL
-        if (timeline != null && timeline.getStatus() == Animation.Status.RUNNING)
+        if (timeline != null)
             timeline.stop();
     }
     @FXML
     public void cambiarVelocidad(){
-        velocidad = velocidad / 2;
-        if (velocidad == 125 / 2) velocidad = 500;
-        if (velocidad == 500) labelVel.setText("Velocidad: 500ms");
-        if (velocidad == 250) labelVel.setText("Velocidad: 250ms");
-        if (velocidad == 125) labelVel.setText("Velocidad: 125ms");
-        if(timeline != null && timeline.getStatus() == Animation.Status.RUNNING) {
+        if (velocidad == 500) velocidad = 250;
+        else if (velocidad == 250) velocidad = 125;
+        else velocidad = 500;
+        labelVel.setText("Velocidad: "+velocidad+"ms");
+        if (timeline != null && timeline.getStatus() == Animation.Status.RUNNING) {
             timeline.stop();
             simular();
         }
