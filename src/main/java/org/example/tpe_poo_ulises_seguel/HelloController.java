@@ -87,7 +87,7 @@ public class HelloController {
         timeline.getKeyFrames().clear();
         velocidad = velocidad/2;
         if (velocidad == 125/2) velocidad = 500;
-        timeline.play();
+        simular();
 
     }
 }
