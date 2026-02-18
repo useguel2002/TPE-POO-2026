@@ -1,6 +1,5 @@
 package org.example.tpe_poo_ulises_seguel;
 
-import Logica.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -2,12 +2,9 @@ package org.example.tpe_poo_ulises_seguel;
 
 import Logica.*;
 import javafx.animation.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -23,7 +20,7 @@ public class HelloController {
     private GridPane grilla;
     private Tablero tablero;
     private Timeline timeline;
-    private int velocidad;
+    private int velocidad = 500; //x1 = 500; x2 = 250; x4 = 125. x1->x2->x4->x1
 
     @FXML
     public void initialize() {
@@ -65,7 +62,7 @@ public class HelloController {
             return; //si ya esta corriendo no deberia volver a hacerlo.
                     // Duplica la velocidad y genera mensajes infinitos por consola
         timeline = new Timeline(
-                new KeyFrame(Duration.millis(500), e -> {
+                new KeyFrame(Duration.millis(velocidad), e -> {
                     boolean estable = tablero.sigGeneracion();
                     dibujar();
                     if (estable) {
@@ -88,5 +85,9 @@ public class HelloController {
     public void cambiarVelocidad(){
         timeline.stop();
         timeline.getKeyFrames().clear();
+        velocidad = velocidad/2;
+        if (velocidad == 125/2) velocidad = 500;
+        timeline.play();
+
     }
 }
