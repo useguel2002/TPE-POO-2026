@@ -18,11 +18,13 @@ public class HelloController {
     @FXML
     private Button simularBoton, sigBoton, pararButton, velocidadButton;
     @FXML
-    private Label labelVel;
+    private Label labelVel, labelGen;
     @FXML
     private GridPane grilla;
     private Tablero tablero;
     private Timeline timeline;
+    private int velocidad;
+
     @FXML
     public void initialize() {
         try {
@@ -72,7 +74,6 @@ public class HelloController {
                     }
                 })
         );
-
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
@@ -82,5 +83,10 @@ public class HelloController {
         //debido a que el timeline estaba en NULL
         if (timeline != null && timeline.getStatus() == Animation.Status.RUNNING)
             timeline.stop();
+    }
+    @FXML
+    public void cambiarVelocidad(){
+        timeline.stop();
+        timeline.getKeyFrames().clear();
     }
 }

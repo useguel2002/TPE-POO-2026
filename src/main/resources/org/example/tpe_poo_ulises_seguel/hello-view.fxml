@@ -19,8 +19,9 @@
             <Button fx:id="simularBoton" mnemonicParsing="false" onAction="#simular" text="Simular" />
             <Button fx:id="pararButton" mnemonicParsing="false" onAction="#parar" text="Parar" />
             <Button fx:id="sigBoton" mnemonicParsing="false" onAction="#siguienteGeneracion" text="Siguiente" />
-            <Button fx:id="velocidadButton" mnemonicParsing="false" text="Velocidad" />
+            <Button fx:id="velocidadButton" mnemonicParsing="false" onAction="#cambiarVelocidad" text="Velocidad" />
             <Label fx:id="labelVel" text="Velocidad: x1" />
+            <Label fx:id="labelGen" text="Generacion: " />
          </children>
       </HBox>
    </bottom>
