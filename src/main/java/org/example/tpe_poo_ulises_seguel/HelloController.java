@@ -83,11 +83,11 @@ public class HelloController {
     }
     @FXML
     public void cambiarVelocidad(){
-        timeline.stop();
-        timeline.getKeyFrames().clear();
-        velocidad = velocidad/2;
-        if (velocidad == 125/2) velocidad = 500;
-        simular();
-
+        if(timeline != null && timeline.getStatus() == Animation.Status.RUNNING) {
+            timeline.stop();
+            velocidad = velocidad / 2;
+            if (velocidad == 125 / 2) velocidad = 500;
+            simular();
+        }
     }
 }
