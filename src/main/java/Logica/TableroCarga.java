@@ -16,7 +16,11 @@ public class TableroCarga {
                 char c = linea.charAt(j);
                 if (c == 'x' ) {
                     tablero.setCelda(i, j, new CeldaViva());
-                } else {
+                } else if (c == 'e' ) {
+                    tablero.setCelda(i, j, new CeldaEnferma());
+                } else if (c == 'l' ) {
+                    tablero.setCelda(i, j, new CeldaLatente());
+                } else{
                     tablero.setCelda(i, j, new CeldaMuerta());
                 }
             }
