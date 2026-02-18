@@ -11,9 +11,10 @@
    <center>
       <StackPane BorderPane.alignment="CENTER">
          <children>
-            <GridPane fx:id="grilla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
-
-            </GridPane>
+            <GridPane fx:id="grilla"
+                      alignment="CENTER"
+                      prefHeight="400.0"
+                      prefWidth="600.0" />
          </children>
       </StackPane>
    </center>
