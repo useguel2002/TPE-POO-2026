@@ -11,13 +11,13 @@ public class TestConsola {
         for (int i = 0; i <filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 if (tablero.getCelda(i,j) instanceof CeldaEnferma)
-                    System.out.print("E ");
+                    System.out.print("E "); //enferma
                 else if (tablero.getCelda(i,j) instanceof CeldaLatente)
-                    System.out.print("L ");
+                    System.out.print("L "); //latente
                 else if (tablero.getCelda(i,j) instanceof CeldaVivaRiesgo)
-                    System.out.print("R ");
+                    System.out.print("R "); //Celda viva con riesgo
                 else if (tablero.getCelda(i,j).estaViva())
-                    System.out.print("O ");
+                    System.out.print("O "); //Celda Viva
                 else
                     System.out.print(". ");
             }
