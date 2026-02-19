@@ -11,7 +11,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class HelloController {
+public class JuegoDeLaVidaController {
     @FXML
     private Button simularBoton, sigBoton, pararButton, velocidadButton;
     @FXML
