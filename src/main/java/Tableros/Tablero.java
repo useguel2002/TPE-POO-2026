@@ -1,4 +1,7 @@
-package Logica;
+package Tableros;
+
+import Celdas.Celda;
+import Celdas.CeldaMuerta;
 
 import java.util.Arrays;
 

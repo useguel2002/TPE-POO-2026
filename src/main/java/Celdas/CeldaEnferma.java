@@ -1,4 +1,4 @@
-package Logica;
+package Celdas;
 
 public class CeldaEnferma extends CeldaViva {
     @Override

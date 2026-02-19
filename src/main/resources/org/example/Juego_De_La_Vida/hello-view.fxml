@@ -10,7 +10,7 @@
 <BorderPane stylesheets="@dark-theme.css"
             xmlns="http://javafx.com/javafx/25"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.tpe_poo_ulises_seguel.JuegoDeLaVidaController">
+            fx:controller="org.example.Juego_De_La_Vida.JuegoDeLaVidaController">
    <center>
       <StackPane BorderPane.alignment="CENTER">
          <children>

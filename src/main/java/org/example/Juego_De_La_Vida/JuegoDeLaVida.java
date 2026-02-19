@@ -1,4 +1,4 @@
-package org.example.tpe_poo_ulises_seguel;
+package org.example.Juego_De_La_Vida;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

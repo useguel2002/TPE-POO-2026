@@ -1,6 +1,7 @@
-package org.example.tpe_poo_ulises_seguel;
+package org.example.Juego_De_La_Vida;
 
-import Logica.*;
+import Tableros.Tablero;
+import Tableros.TableroCarga;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

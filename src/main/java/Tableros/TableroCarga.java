@@ -1,4 +1,6 @@
-package Logica;
+package Tableros;
+
+import Celdas.*;
 
 import java.io.*;
 import java.util.Random;

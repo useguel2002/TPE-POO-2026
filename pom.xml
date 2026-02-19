@@ -81,7 +81,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.example.tpe_poo_ulises_seguel/org.example.tpe_poo_ulises_seguel.HelloApplication
+                                org.example.tpe_poo_ulises_seguel/org.example.Juego_De_La_Vida.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

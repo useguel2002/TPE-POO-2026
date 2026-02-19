@@ -5,6 +5,6 @@ module org.example.tpe_poo_ulises_seguel {
     requires org.controlsfx.controls;
     requires com.almasb.fxgl.all;
 
-    opens org.example.tpe_poo_ulises_seguel to javafx.fxml;
-    exports org.example.tpe_poo_ulises_seguel;
+    opens org.example.Juego_De_La_Vida to javafx.fxml;
+    exports org.example.Juego_De_La_Vida;
 }
