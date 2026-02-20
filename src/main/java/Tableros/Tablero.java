@@ -2,6 +2,7 @@ package Tableros;
 
 import Celdas.Celda;
 import Celdas.CeldaMuerta;
+import Reglas.Regla;
 
 import java.util.Arrays;
 
@@ -9,6 +10,7 @@ public class Tablero {
     private Celda[][] celdas;
     private int filas;
     private int columnas;
+    private Regla regla;
 
     public Tablero(int fil, int col){
         this.filas = fil;
@@ -51,7 +53,7 @@ public class Tablero {
         for (int i=0; i< filas; i++)
             for (int j=0; j<columnas; j++){
                 int vecVivos = contarVecinosVivos(i,j);
-                nuevoEstado[i][j] = celdas[i][j].siguienteEstado(vecVivos);
+                nuevoEstado[i][j] = regla.aplicar(celdas[i][j],vecVivos);
             }
         if (Arrays.deepEquals(celdas, nuevoEstado)){
             return true;

@@ -17,8 +17,6 @@ public class TestConsola {
                     System.out.print("E "); //enferma
                 else if (tablero.getCelda(i,j) instanceof CeldaLatente)
                     System.out.print("L "); //latente
-                else if (tablero.getCelda(i,j) instanceof CeldaVivaRiesgo)
-                    System.out.print("R "); //Celda viva con riesgo
                 else if (tablero.getCelda(i,j).estaViva())
                     System.out.print("O "); //Celda Viva
                 else
