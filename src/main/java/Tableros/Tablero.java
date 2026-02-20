@@ -12,9 +12,10 @@ public class Tablero {
     private int columnas;
     private Regla regla;
 
-    public Tablero(int fil, int col){
+    public Tablero(int fil, int col, Regla reg){
         this.filas = fil;
         this.columnas = col;
+        this.regla = reg;
         celdas = new Celda[fil][col];
 
         for (int i=0; i<filas; i++)

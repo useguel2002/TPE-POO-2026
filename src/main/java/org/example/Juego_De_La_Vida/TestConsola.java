@@ -81,12 +81,11 @@ public class TestConsola {
     public static void main(String[] args) {
         Tablero tablero;
         try {
-            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 5.txt");
+            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 3.txt");
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());
             return; //en caso que TableroA siga NULL volver/terminar
         }
-        Tablero tableroB = TableroCarga.aleatorio(10, 10, 0.5);
         simular(tablero);
 
     }
