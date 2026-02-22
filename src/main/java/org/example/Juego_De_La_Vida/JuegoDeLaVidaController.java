@@ -1,7 +1,7 @@
 package org.example.Juego_De_La_Vida;
 
-import Tableros.Tablero;
-import Tableros.TableroCarga;
+import Celdas.*;
+import Tableros.*;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,17 +34,21 @@ public class JuegoDeLaVidaController {
             return; //en caso que Tablero siga NULL volver/terminar
         }
     }
-    public void dibujar(){
+    public void dibujar() {
         grilla.getChildren().clear();
         for (int fila = 0; fila < tablero.getFilas(); fila++) {
             for (int col = 0; col < tablero.getColumnas(); col++) {
                 Pane celda = new Pane();
-                celda.setStyle("-fx-border-color: black;");
-                if (tablero.getCelda(fila, col).estaViva()) {
-                    celda.setStyle("-fx-background-color: black;");
-                } else {
-                    celda.setStyle("-fx-background-color: white;");
-                }
+                String color;
+                if (tablero.getCelda(fila, col) instanceof CeldaEnferma)
+                    color = "green";
+                else if (tablero.getCelda(fila, col) instanceof CeldaLatente)
+                    color = "gray";
+                else if (tablero.getCelda(fila, col).estaViva())
+                    color = "white";
+                else
+                    color = "black";
+                celda.setStyle("-fx-background-color: " + color + ";" +"-fx-border-color: black;");
                 celda.setPrefSize(15, 15);
                 grilla.add(celda, col, fila);
             }

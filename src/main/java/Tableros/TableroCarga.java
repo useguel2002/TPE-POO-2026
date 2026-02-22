@@ -2,6 +2,7 @@ package Tableros;
 
 import Celdas.*;
 import Reglas.ReglaBasica;
+import Reglas.ReglaEnfermedad;
 
 import java.io.*;
 import java.util.Random;
@@ -12,7 +13,7 @@ public class TableroCarga {
         String[] dimensiones = br.readLine().split(" ");
         int filas = Integer.parseInt(dimensiones[0]);
         int columnas = Integer.parseInt(dimensiones[1]);
-        Tablero tablero = new Tablero(filas, columnas, new ReglaBasica());
+        Tablero tablero = new Tablero(filas, columnas, new ReglaEnfermedad());
         for (int i = 0; i < filas; i++) {
             String linea = br.readLine();
             for (int j = 0; j < columnas; j++) {
@@ -33,7 +34,7 @@ public class TableroCarga {
     }
 
     public static Tablero aleatorio(int filas, int columnas, double probabilidadVida) {
-        Tablero tablero = new Tablero(filas, columnas, new ReglaBasica());
+        Tablero tablero = new Tablero(filas, columnas, new ReglaEnfermedad());
         Random random = new Random();
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
