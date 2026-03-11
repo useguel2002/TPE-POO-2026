@@ -30,6 +30,7 @@ public class JuegoDeLaVidaController {
     @FXML
     public void initialize() {
         try {
+            //Aqui agregan reglas, o las quitan.
             //El orden de las reglas es importante, para que no se apliquen reglas antes que otras o no pisarlas
             //Regla Basica siempre al final
             regla = new ReglaCombinacion(List.of(
