@@ -1,13 +1,16 @@
 package org.example.Juego_De_La_Vida;
 
 import Celdas.*;
+import Reglas.*;
 import Tableros.Tablero;
 import Tableros.TableroCarga;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class TestConsola {
+    private static Regla regla;
     private static void imprimir(Tablero tablero) {
         int filas = tablero.getFilas();
         int columnas = tablero.getColumnas();
@@ -81,7 +84,14 @@ public class TestConsola {
     public static void main(String[] args) {
         Tablero tablero;
         try {
-            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 3.txt");
+            //El orden de las reglas es importante, para que no se apliquen reglas antes que otras o no pisarlas
+            //Regla Basica siempre al final
+            regla = new ReglaCombinacion(List.of(
+                            new ReglaEnfermedad(),
+                            new ReglaLatente(),
+                            new ReglaBasica())
+            );
+            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 3.txt", regla);
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());
             return; //en caso que TableroA siga NULL volver/terminar

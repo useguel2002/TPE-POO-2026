@@ -1,6 +1,7 @@
 package org.example.Juego_De_La_Vida;
 
 import Celdas.*;
+import Reglas.*;
 import Tableros.*;
 import javafx.animation.*;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.List;
 
 public class JuegoDeLaVidaController {
     @FXML
@@ -20,6 +22,7 @@ public class JuegoDeLaVidaController {
     @FXML
     private GridPane grilla;
     private Tablero tablero;
+    private Regla regla;
     private Timeline timeline;
     private int velocidad = 500, generacion=0;
     //x1 = 500; x2 = 250; x4 = 125. x1->x2->x4->x1
@@ -27,7 +30,14 @@ public class JuegoDeLaVidaController {
     @FXML
     public void initialize() {
         try {
-            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 3.txt");
+            //El orden de las reglas es importante, para que no se apliquen reglas antes que otras o no pisarlas
+            //Regla Basica siempre al final
+            regla = new ReglaCombinacion(List.of(
+                            new ReglaEnfermedad(),
+                            new ReglaLatente(),
+                            new ReglaBasica())
+            );
+            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 3.txt", regla);
             dibujar();
         } catch (IOException e) {
             System.out.println("Error al cargar archivo: " + e.getMessage());

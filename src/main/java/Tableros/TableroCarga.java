@@ -1,19 +1,18 @@
 package Tableros;
 
 import Celdas.*;
-import Reglas.ReglaBasica;
-import Reglas.ReglaEnfermedad;
+import Reglas.*;
 
 import java.io.*;
 import java.util.Random;
 
 public class TableroCarga {
-    public static Tablero desdeArchivo(String ruta) throws IOException {
+    public static Tablero desdeArchivo(String ruta, Regla regla) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(ruta));
         String[] dimensiones = br.readLine().split(" ");
         int filas = Integer.parseInt(dimensiones[0]);
         int columnas = Integer.parseInt(dimensiones[1]);
-        Tablero tablero = new Tablero(filas, columnas, new ReglaEnfermedad());
+        Tablero tablero = new Tablero(filas, columnas, regla);
         for (int i = 0; i < filas; i++) {
             String linea = br.readLine();
             for (int j = 0; j < columnas; j++) {
@@ -33,8 +32,8 @@ public class TableroCarga {
         return tablero;
     }
 
-    public static Tablero aleatorio(int filas, int columnas, double probabilidadVida) {
-        Tablero tablero = new Tablero(filas, columnas, new ReglaEnfermedad());
+    public static Tablero aleatorio(int filas, int columnas, double probabilidadVida, Regla regla) {
+        Tablero tablero = new Tablero(filas, columnas, regla);
         Random random = new Random();
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
