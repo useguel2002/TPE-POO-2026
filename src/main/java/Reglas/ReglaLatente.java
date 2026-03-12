@@ -10,8 +10,7 @@ public class ReglaLatente extends ReglaBasica {
         if (actual instanceof CeldaLatente) {
             if (vecVivos == 1)
                 return new CeldaViva();
-            return new CeldaMuerta();
         }
-        return super.aplicar(actual, vecVivos);
+        return actual; //super.aplicar(actual, vecVivos);
     }
 }

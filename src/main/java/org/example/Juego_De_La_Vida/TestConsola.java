@@ -23,7 +23,7 @@ public class TestConsola {
                 else if (tablero.getCelda(i,j).estaViva())
                     System.out.print("O "); //Celda Viva
                 else
-                    System.out.print(". ");
+                    System.out.print(". "); //Celda muerta
             }
             System.out.println();
         }
@@ -82,22 +82,68 @@ public class TestConsola {
         }
     }
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         Tablero tablero;
+        // Reglas
+        regla = new ReglaCombinacion(List.of(
+                //new ReglaEnfermedad(),
+                //new ReglaLatente(),
+                new ReglaBasica()));
         try {
-            //El orden de las reglas es importante, para que no se apliquen reglas antes que otras o no pisarlas
-            //Regla Basica siempre al final
-            regla = new ReglaCombinacion(List.of(
-                            new ReglaEnfermedad(),
-                            new ReglaLatente(),
-                            new ReglaBasica())
-            );
-            tablero = TableroCarga.desdeArchivo("src/main/resources/Ejemplos/Ejemplo 3.txt", regla);
+            System.out.println("=== Juego de la Vida ===");
+            System.out.println("1 - Cargar desde archivo");
+            System.out.println("2 - Generar tablero aleatorio");
+            System.out.print("Seleccione una opción: ");
+            int opcion = scanner.nextInt();
+            if (opcion == 1) {
+                System.out.println("Archivos disponibles:");
+                System.out.println("1 - Ejemplo 1.txt (Oscilador)");
+                System.out.println("2 - Ejemplo 2.txt");
+                System.out.println("3 - Ejemplo 3.txt (Nombre ALumno)");
+                System.out.println("4 - Ejemplo 4.txt (Prueba Regla Latente)");
+                System.out.println("5 - Ejemplo 5.txt (Archivo delimitado pero vacio. Prueba de error)");
+                System.out.println("6 - Ejemplo 6.txt (Archivo no delimitado. Prueba de error)");
+                System.out.print("Seleccione archivo: ");
+                int archivo = scanner.nextInt();
+                String ruta;
+                switch (archivo) {
+                    case 1:
+                        ruta = "src/main/resources/Ejemplos/Ejemplo 1.txt";
+                        break;
+                    case 2:
+                        ruta = "src/main/resources/Ejemplos/Ejemplo 2.txt";
+                        break;
+                    case 3:
+                        ruta = "src/main/resources/Ejemplos/Ejemplo 3.txt";
+                        break;
+                    case 4:
+                        ruta = "src/main/resources/Ejemplos/Ejemplo 4.txt";
+                        break;
+                    case 5:
+                        ruta = "src/main/resources/Ejemplos/Ejemplo 5.txt";
+                        break;
+                    case 6:
+                        ruta = "src/main/resources/Ejemplos/Ejemplo 6.txt";
+                        break;
+                    default:
+                        ruta = "ARCHIVO INEXISTENTE"; //
+                        break;
+                }
+                tablero = TableroCarga.desdeArchivo(ruta, regla);
+            } else {
+                System.out.print("Filas: ");
+                int filas = scanner.nextInt();
+                System.out.print("Columnas: ");
+                int columnas = scanner.nextInt();
+                System.out.print("Probabilidad de vida (0,0 - 1,0): ");
+                double prob = scanner.nextDouble();
+                tablero = TableroCarga.aleatorio(filas, columnas, prob, regla);
+            }
         } catch (IOException e) {
-            System.out.println("Error al cargar archivo: " + e.getMessage());
-            return; //en caso que TableroA siga NULL volver/terminar
+            System.out.println("Error al cargar tablero: " + e.getMessage());
+            return;
         }
         simular(tablero);
-
     }
 
 }
