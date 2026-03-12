@@ -2,7 +2,13 @@ package Reglas;
 
 import Celdas.*;
 import java.util.Random;
-
+/**
+ * Regla que define el comportamiento de las celdas latentes.
+ *
+ * Una celda latente revive si tiene exactamente un vecino vivo en su vecindad.
+ *
+ * Ver NOTA en CeldaLatente
+ */
 public class ReglaLatente extends ReglaBasica {
     private final Random random = new Random();
     @Override
@@ -11,6 +17,6 @@ public class ReglaLatente extends ReglaBasica {
             if (vecVivos == 1)
                 return new CeldaViva();
         }
-        return actual; //super.aplicar(actual, vecVivos);
+        return super.aplicar(actual, vecVivos);
     }
 }

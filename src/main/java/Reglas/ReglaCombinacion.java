@@ -2,9 +2,17 @@ package Reglas;
 
 import Celdas.*;
 import java.util.List;
-//Si quiero combinar varias reglas en una uso esta clase. Para no crear reglas con todas las combinaciones posibles
-//Es decir, no hacer esto: ReglaEnfermedadLatente, ReglaEnfermedadZombie, etc.
-//Aun asi hay que tenr cuidado. Hay que ordenar bien las reglas ára que no se pisen o se apliquen las bases antes que las especiales
+/**
+ * Permite combinar múltiples reglas en una sola.
+ *
+ * Esto evita tener que crear clases para todas las combinaciones
+ * posibles de reglas (por ejemplo: ReglaEnfermedadLatente,
+ * ReglaEnfermedadZombie, etc.).
+ *
+ * Las reglas se aplican en el orden definido en la lista. (Por iseño, ReglaBasica siempre ira al final.)
+ * Si una regla modifica el estado de la celda, se detiene
+ * la evaluación para evitar que otra regla posterior sobrescriba el cambio.
+ */
 public class ReglaCombinacion implements Regla {
     private List<Regla> reglas;
     public ReglaCombinacion(List<Regla> reglas) {
@@ -17,7 +25,7 @@ public class ReglaCombinacion implements Regla {
         for (Regla r : reglas) {
             Celda nueva = r.aplicar(resultado, vecVivos);
             //Si una regla modifica una celda, esta ebe retornar e interrumpir la caena.
-            // Sino corre riesgo de pisarla otra regla posterior
+            //Sino corre riesgo de pisarla otra regla posterior
             if (nueva != resultado) return nueva;
             resultado = nueva;
         }
