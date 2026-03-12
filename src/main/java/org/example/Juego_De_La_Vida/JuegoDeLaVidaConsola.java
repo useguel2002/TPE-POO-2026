@@ -86,6 +86,7 @@ public class JuegoDeLaVidaConsola {
         Scanner scanner = new Scanner(System.in);
         Tablero tablero;
         // Selección de reglas
+        System.out.println("ELECCIÓN DE REGLAS ESPECIALES");
         List<Regla> reglasSeleccionadas = new ArrayList<>();
         System.out.print("¿Activar regla Enfermedad? (s/n): ");
         if (scanner.next().equalsIgnoreCase("s")) {
@@ -95,7 +96,7 @@ public class JuegoDeLaVidaConsola {
         if (scanner.next().equalsIgnoreCase("s")) {
             reglasSeleccionadas.add(new ReglaLatente());
         }
-        // La básica siempre al final
+        // La básica siempre al final y es obligatoria
         reglasSeleccionadas.add(new ReglaBasica());
         regla = new ReglaCombinacion(reglasSeleccionadas);
         try {
