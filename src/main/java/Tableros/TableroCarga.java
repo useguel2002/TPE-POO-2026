@@ -9,6 +9,9 @@ import java.util.Random;
 public class TableroCarga {
     public static Tablero desdeArchivo(String ruta, Regla regla) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(ruta));
+        String primeraLinea = br.readLine();
+        if (primeraLinea == null)
+            throw new IOException("Archivo vacío.");
         String[] dimensiones = br.readLine().split(" ");
         if (dimensiones.length != 2)
             throw new IOException("La primera línea debe indicar filas y columnas.");

@@ -103,6 +103,7 @@ public class TestConsola {
                 System.out.println("4 - Ejemplo 4.txt (Prueba Regla Latente)");
                 System.out.println("5 - Ejemplo 5.txt (Archivo delimitado pero vacio. Prueba de error)");
                 System.out.println("6 - Ejemplo 6.txt (Archivo no delimitado. Prueba de error)");
+                System.out.println("7 - Ejemplo 7.txt (Archivo totalmente vacio. Prueba de error)");
                 System.out.print("Seleccione archivo: ");
                 int archivo = scanner.nextInt();
                 String ruta;
@@ -124,6 +125,9 @@ public class TestConsola {
                         break;
                     case 6:
                         ruta = "src/main/resources/Ejemplos/Ejemplo 6.txt";
+                        break;
+                    case 7:
+                        ruta = "src/main/resources/Ejemplos/Ejemplo 7.txt";
                         break;
                     default:
                         ruta = "ARCHIVO INEXISTENTE"; //
