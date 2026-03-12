@@ -60,6 +60,13 @@ El diseño sigue principios de Programación Orientada a Objetos,
 separando responsabilidades entre clases y permitiendo extender 
 el comportamiento mediante nuevas reglas o tipos de celda.
 
+* Cada celda es consciente de su propia existencia.
+* El tablero es el encargado e determinar los vecinos de cada celda asi como tambien calcular su siguiente estado.
+* Las reglas solo indican comportamiento. Las celdas no son responsables de las reglas de todo el tablero, sino unicamente de su propio estado
+* El sistema fue diseñado para la posibilidad de extender el juego con nuevas reglas y celdas sin modificar clases existentes
+* Se decidio en utilizar una regla que se compone de otras para poder combinarlas sin tener que modificar lógica del juego.
+* 
+
 ---
 
 ## Celdas
