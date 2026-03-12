@@ -6,10 +6,11 @@ import Tableros.Tablero;
 import Tableros.TableroCarga;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class TestConsola {
+public class JuegoDeLaVidaConsola {
     private static Regla regla;
     private static void imprimir(Tablero tablero) {
         int filas = tablero.getFilas();
@@ -84,22 +85,43 @@ public class TestConsola {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Tablero tablero;
-        // Reglas
-        regla = new ReglaCombinacion(List.of(
-                //new ReglaEnfermedad(),
-                //new ReglaLatente(),
-                new ReglaBasica()));
+        // Selección de reglas
+        List<Regla> reglasSeleccionadas = new ArrayList<>();
+        System.out.print("¿Activar regla Enfermedad? (s/n): ");
+        if (scanner.next().equalsIgnoreCase("s")) {
+            reglasSeleccionadas.add(new ReglaEnfermedad());
+        }
+        System.out.print("¿Activar regla Latente? (s/n): ");
+        if (scanner.next().equalsIgnoreCase("s")) {
+            reglasSeleccionadas.add(new ReglaLatente());
+        }
+        // La básica siempre al final
+        reglasSeleccionadas.add(new ReglaBasica());
+        regla = new ReglaCombinacion(reglasSeleccionadas);
         try {
-            System.out.println("=== Juego de la Vida ===");
-            System.out.println("1 - Cargar desde archivo");
-            System.out.println("2 - Generar tablero aleatorio");
-            System.out.print("Seleccione una opción: ");
-            int opcion = scanner.nextInt();
+            int opcion;
+            while (true) {
+                System.out.println("=== Juego de la Vida ===");
+                System.out.println("1 - Cargar desde archivo");
+                System.out.println("2 - Generar tablero aleatorio");
+                System.out.print("Seleccione una opción: ");
+                if (scanner.hasNextInt()) {
+                    opcion = scanner.nextInt();
+                    if (opcion == 1 || opcion == 2) {
+                        break;
+                    } else {
+                        System.out.println("Opción inválida. Intente nuevamente.\n");
+                    }
+                } else {
+                    System.out.println("Debe ingresar un número.\n");
+                    scanner.next();
+                }
+            }
             if (opcion == 1) {
                 System.out.println("Archivos disponibles:");
                 System.out.println("1 - Ejemplo 1.txt (Oscilador)");
                 System.out.println("2 - Ejemplo 2.txt");
-                System.out.println("3 - Ejemplo 3.txt (Nombre ALumno)");
+                System.out.println("3 - Ejemplo 3.txt (Nombre Alumno)");
                 System.out.println("4 - Ejemplo 4.txt (Prueba Regla Latente)");
                 System.out.println("5 - Ejemplo 5.txt (Archivo delimitado pero vacio. Prueba de error)");
                 System.out.println("6 - Ejemplo 6.txt (Archivo no delimitado. Prueba de error)");
@@ -130,7 +152,7 @@ public class TestConsola {
                         ruta = "src/main/resources/Ejemplos/Ejemplo 7.txt";
                         break;
                     default:
-                        ruta = "ARCHIVO INEXISTENTE"; //
+                        ruta = "ARCHIVO INEXISTENTE";
                         break;
                 }
                 tablero = TableroCarga.desdeArchivo(ruta, regla);
