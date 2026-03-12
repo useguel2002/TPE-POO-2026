@@ -2,17 +2,31 @@ package Tableros;
 
 import Celdas.*;
 import Reglas.*;
-
 import java.io.*;
 import java.util.Random;
-
+/**
+ * Clase utilitaria para crear tableros
+ * a partir de archivos o de forma aleatoria.
+ */
 public class TableroCarga {
+    /**
+     * Crea un tablero leyendo su estado desde un archivo.
+     *
+     * Formato esperado:
+     * primera línea: filas columnas
+     * siguientes líneas: contenido del tablero
+     *
+     * x = celda viva
+     * e = celda enferma
+     * l = celda latente
+     * otro = celda muerta
+     */
     public static Tablero desdeArchivo(String ruta, Regla regla) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(ruta));
         String primeraLinea = br.readLine();
         if (primeraLinea == null)
             throw new IOException("Archivo vacío.");
-        String[] dimensiones = br.readLine().split(" ");
+        String[] dimensiones = primeraLinea.split(" ");
         if (dimensiones.length != 2)
             throw new IOException("La primera línea debe indicar filas y columnas.");
         int filas = Integer.parseInt(dimensiones[0]);
@@ -39,7 +53,14 @@ public class TableroCarga {
         br.close();
         return tablero;
     }
-
+    /**
+     * Genera un tablero con distribución aleatoria de celdas vivas.
+     *
+     * probabilidadVida: probabilidad de que una celda sea viva
+     *
+     * Posible error: No implemente la creación de otras celdas dependiendo la regla utilizada. Solo crea Celdas Vivas y
+     * Celdas Muertas (las originales. Luego se aplican reglas normalmente sobre ellas)
+     */
     public static Tablero aleatorio(int filas, int columnas, double probabilidadVida, Regla regla) {
         Tablero tablero = new Tablero(filas, columnas, regla);
         Random random = new Random();

@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class JuegoDeLaVidaConsola {
     private static Regla regla;
+
     private static void imprimir(Tablero tablero) {
         int filas = tablero.getFilas();
         int columnas = tablero.getColumnas();

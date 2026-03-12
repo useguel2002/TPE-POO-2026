@@ -5,13 +5,19 @@ import Celdas.CeldaMuerta;
 import Reglas.Regla;
 
 import java.util.Arrays;
-
+/**
+ * Representa el tablero del juego.
+ * Contiene una matriz de celdas y la regla que determina cómo evolucionan en cada generación.
+ */
 public class Tablero {
     private Celda[][] celdas;
     private int filas;
     private int columnas;
     private Regla regla;
-
+    /**
+     * Constructor del tablero.
+     * Inicializa todas las posiciones como celdas muertas.
+     */
     public Tablero(int fil, int col, Regla reg){
         this.filas = fil;
         this.columnas = col;
@@ -27,6 +33,15 @@ public class Tablero {
 //       |F2C2|F2C3|F2C4| -1-1|-1-0|-1+1
 //       |F3C2|F3C3|F3C4| -0-1|-0-0|-0+1
 //       |F4C2|F4C3|F4C4| +1-1|+1-0|+1+1
+    /**
+     * Cuenta la cantidad de vecinos vivos de una celda.
+     *
+     * Para una celda en posición (fila, columna) se revisan
+     * las 8 posiciones adyacentes.
+     *
+     * Se verifica que las posiciones sean válidas para evitar
+     * salir de los límites del tablero.
+     */
     public int contarVecinosVivos (int fil, int col){
         //Metodo para contar los vecinos vivos de una celda A. Debe revisar que las filas y
         //columnas sean validas (en caso de que se cuenten los vecinos de una esquina) y luego contar
@@ -40,12 +55,27 @@ public class Tablero {
             }
         return vivos;
     }
+    /**
+     * Verifica si una posición pertenece al tablero.
+     */
     private boolean esValida(int fil, int col) {
         //Devuelve si la fila y columna EXISTEN en el tablero.
         return fil >= 0 && fil < filas &&
                 col >= 0 && col < columnas;
     }
 
+    /**
+     * Calcula la siguiente generación del tablero.
+     *
+     * Para cada celda:
+     * - Se cuentan los vecinos vivos
+     * - Se aplica la regla correspondiente
+     *
+     * Se utiliza una matriz auxiliar para evitar modificar
+     * el tablero mientras se calcula la nueva generación. (Como pedia el enunciado)
+     *
+     * Retorna true si el tablero no cambia (estado estable)
+     */
     public boolean sigGeneracion(){
         //Metodo para calcular la proxima generacion de celdas en el tablero. Por cada celda se debe contar la cantidad de
         //vecinos, y a razon de su cantidad determinar si mueren, viven o se mantiene el estado actual.
@@ -64,6 +94,9 @@ public class Tablero {
         }
     }
 
+    /**
+     * GETTERS Y SETTERS
+     */
     public void setColumnas(int columnas) {
         this.columnas = columnas;
     }
