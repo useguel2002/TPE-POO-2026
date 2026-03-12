@@ -193,6 +193,7 @@ Controlador de la interfaz que gestiona:
 * https://docs.oracle.com/javase/8/javafx/api/overview-summary.html
 * https://www.ra-ma.es/media/rama/files/book-attachment-9912.pdf
 * Material otorgado por la cátedra e Programación Orientada a Objetos
+* https://playgameoflife.com/ para la corroboración de la implementación de los metodos de simulación y las reglas.
 
 #### Información Adicional: 
 * Se utilizó Inteligencia Artificial para la creación el archivo CSS dark-theme asi 
