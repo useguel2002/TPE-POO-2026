@@ -4,15 +4,29 @@ import Celdas.*;
 import Reglas.*;
 import Tableros.Tablero;
 import Tableros.TableroCarga;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Versión de consola del Juego de la Vida. Se utilizo para corroborar en primera instancia lo hecho en JavaFX
+ * Permite seleccionar reglas, cargar un tablero desde archivo
+ * o generarlo aleatoriamente, y luego simular su evolución.
+ */
 public class JuegoDeLaVidaConsola {
+    // Regla que se aplicará al tablero
     private static Regla regla;
-
+    /**
+     * Imprime el estado actual del tablero en consola.
+     * Cada tipo de celda se representa con un símbolo:
+     * E = enferma
+     * L = latente
+     * O = viva
+     * . = muerta
+     *
+     * Se puede extender facilmente
+     */
     private static void imprimir(Tablero tablero) {
         int filas = tablero.getFilas();
         int columnas = tablero.getColumnas();
@@ -31,6 +45,11 @@ public class JuegoDeLaVidaConsola {
         }
         System.out.println();
     }
+    /**
+     * Solicita al usuario la cantidad de generaciones a simular.
+     * Si el usuario ingresa 0, la simulación será indefinida
+     * hasta que el tablero se vuelva estable/infinita si es un oscilador (Ejemplo 1.txt)
+     */
     private static int setGeneracion(){
         Scanner scanner = new Scanner(System.in);
         int n;
@@ -49,11 +68,17 @@ public class JuegoDeLaVidaConsola {
             }
         }
     }
+    /**
+     * Ejecuta la simulación del juego. Muestra el estado inicial y luego cada generación
+     * hasta llegar al número solicitado o hasta que el tablero se vuelva estable.
+     */
     private static void simular(Tablero tablero){
+        //imprime lo primero que hay en el archivo.
         int n = setGeneracion();
         int i = 1;
         System.out.println("Estado Inicial:");
         imprimir(tablero);
+        //Simula indefinidamente o hasta un estado estable
         if (n==0){
             while (true) {
                 boolean estable = tablero.sigGeneracion();
@@ -71,6 +96,7 @@ public class JuegoDeLaVidaConsola {
                 }
             }
         }
+        //Simula hasta generacion solicitada (o antes si el tablero queda estable antes de lo solicitado)
         else {
             for (;i<=n;i++){
                 boolean estable = tablero.sigGeneracion();
@@ -83,6 +109,13 @@ public class JuegoDeLaVidaConsola {
             }
         }
     }
+    /**
+     * Método principal del programa.
+     * Permite al usuario:
+     * - seleccionar reglas
+     * - elegir origen del tablero
+     * - iniciar la simulación
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Tablero tablero;
